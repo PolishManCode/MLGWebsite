@@ -20,7 +20,7 @@ private DbAccessImpl database = new DbAccessImpl();
 	public void createUser(String name, String userName, String password)
 	{
 		
-		PreparedStatement stmt = database.newPrepStm("insert into users4(name, userName, password) values(?, ?, ?)");
+		PreparedStatement stmt = database.newPrepStm("insert into users(name, userName, password) values(?, ?, ?)");
 		
 		try {
 			stmt.setString(1, name);
@@ -36,7 +36,7 @@ private DbAccessImpl database = new DbAccessImpl();
 	public boolean checkUser(String userName, String password) throws SQLException{
 		System.out.println("Inside checkUser");
 		System.out.println(userName +" " + password);
-		PreparedStatement stmt = database.newPrepStm("select count(*) from users4 where userName = ? and password =?");
+		PreparedStatement stmt = database.newPrepStm("select count(*) from users where userName = ? and password =?");
 		try {
 			stmt.setString(1, userName);
 			stmt.setString(2, password);
