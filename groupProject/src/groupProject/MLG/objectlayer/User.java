@@ -1,7 +1,7 @@
 package groupProject.MLG.objectlayer;
 
 
-
+//Test comment for gitHub
 public class User {
 private String name;
 private String userName;
