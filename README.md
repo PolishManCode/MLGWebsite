@@ -7,3 +7,4 @@ To actually run the Website in your Eclipse Environment:
 2. Download or clone the project and open groupProject or import it to Eclipse workspace.
 3. Make sure to change the admin info in Database Access class.
 4. Run home.html to start it up.
+5. Make sure you make a pull request and work in your own branch if you want to commit changes.
