@@ -22,7 +22,7 @@ public class MLGImpl {
 	
 	public void create(User user)
 	{
-		impl.createUser(user.getName(), user.getUserName(), user.getPassword());
+		impl.createUser(user.getFname(), user.getLname(), user.getUserName(), user.getPassword());
 	}
 	
 	public boolean check(User user) throws SQLException{

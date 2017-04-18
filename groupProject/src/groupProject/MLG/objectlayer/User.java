@@ -1,29 +1,41 @@
 package groupProject.MLG.objectlayer;
 
 
-//Test comment for gitHub
+
 public class User {
-private String name;
+private String fname;
+private String lname;
 private String userName;
 private String password;
 
-public User(String name, String userName, String password) {
+
+public User(String fname, String lname, String userName, String password) {
 	super();
-	this.name = name;
+	this.fname = fname;
+	this.lname = lname;
 	this.userName = userName;
 	this.password = password;
 }
+
 public User() {
-	// TODO Auto-generated constructor stub
-	this.name = null;
-	this.userName = null;
-	this.password = null;
+	super();
+	this.fname = "";
+	this.lname = "";
+	this.userName = "";
+	this.password = "";
 }
-public String getName() {
-	return name;
+
+public String getFname() {
+	return fname;
 }
-public void setName(String name) {
-	this.name = name;
+public void setFname(String fname) {
+	this.fname = fname;
+}
+public String getLname() {
+	return lname;
+}
+public void setLname(String lname) {
+	this.lname = lname;
 }
 public String getUserName() {
 	return userName;
@@ -37,7 +49,6 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-
 
 
 

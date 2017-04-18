@@ -17,15 +17,16 @@ private DbAccessImpl database = new DbAccessImpl();
 		database.disconnect();
 	}
 
-	public void createUser(String name, String userName, String password)
+	public void createUser(String fname, String lname, String userName, String password)
 	{
 		
-		PreparedStatement stmt = database.newPrepStm("insert into users(name, userName, password) values(?, ?, ?)");
+		PreparedStatement stmt = database.newPrepStm("insert into users(fname, lname, userName, password) values(?, ?, ?, ?)");
 		
 		try {
-			stmt.setString(1, name);
-			stmt.setString(2, userName);
-			stmt.setString(3, password);
+			stmt.setString(1, fname);
+			stmt.setString(2, lname);
+			stmt.setString(3, userName);
+			stmt.setString(4, password);
 			
 		} catch (SQLException e) {
 		}
