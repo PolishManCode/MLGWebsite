@@ -4,12 +4,15 @@ CREATE TABLE users (
 	lname varchar(255) NOT NULL,
 	userName varchar(255) DEFAULT NULL,
 	password varchar(255) DEFAULT NULL,
+	game varchar(255) DEFAULT NULL,
  PRIMARY KEY (User_ID)
  );
  
  CREATE TABLE links(
 	Link_ID int NOT NULL,
 	link varchar(255) NOT NULL,
+	game varchar(255) NOT NULL,
+	voteCount int DEFAULT NULL,
 	User_ID int,
 	PRIMARY KEY (Link_ID),
 	FOREIGN KEY (User_ID) REFERENCES users(User_ID)
