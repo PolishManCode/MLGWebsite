@@ -6,7 +6,7 @@ public abstract class DbAccessConfiguration
 	
 	static final String CONNECTION_URL = "jdbc:mysql://localhost:3306/MLG"; //  "jdbc:mysql://localhost:3306/imdb?autoReconnect=true&useSSL=false";
 	
-	static final String DB_CONNECTION_USERNAME = "demo";
+	static final String DB_CONNECTION_USERNAME = "root";
 	
-	static final String DB_CONNECTION_PASSWORD = "demo";
+	static final String DB_CONNECTION_PASSWORD = "krakow93";
 }
