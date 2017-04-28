@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-left"><img src='pictures/logo.png'
+                <a href="MLGServlet?param=home" class="navbar-left"><img src='pictures/logo.png'
 			alt='Recruit Gaming Home' style='width: 100px; height: 54px;'></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,14 +50,25 @@
                         <a href="MLGServlet?param=games">Games</a>
                     </li>
                     <li>
-                        <li><a href="MLGServlet?param=recruit">Recruits</a></li>
+                        <li><a href="MLGServlet?param=recruitment">Recruitment</a></li>
                     </li>
-                    <li>
-                       <li><a href="MLGServlet?param=recruitment">Recruiting</a></li>
-                    </li>
+                    <#if guest>
                     <li>
                         <li><a href="MLGServlet?param=profile">Profile</a></li>
                     </li>
+                    </#if>
+                    <#if guest>
+                    <li class="right">
+                        <li><a href=MLGServlet?param=logOutIn class ="logIn">LogOut</a></li>
+                    </li>
+                    </#if>
+                    
+                    <#if guest = false>
+                    <li class="right">
+                        <li><a href=MLGServlet?param=logOutIn class ="logIn">LogIn</a></li>
+                    </li>
+                    </#if>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -65,7 +76,7 @@
         <!-- /.container -->
     </nav>
 
-    <div class="container">
+   <div class="container">
 
         <div class="row">
             <div class="box">
@@ -77,23 +88,59 @@
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center">
-                    <img class="img-responsive img-border img-full" src="img/slide-1.jpg" alt="">
+                    <img class="img-responsive img-border img-full" src="img/dota.png" alt="">
                     <h2>Dota 2
                         <br>
                         <small>Current Recruits</small>
                     </h2>
-                    <p>List the recruits for this game. Each place holder would be one recruit, can make more</p>
-                    <a href="#" class="btn btn-default btn-lg">Send email</a>
+                    
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th>User name</th>
+                        <th>Name</th>
+                        <th>Contact information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <#list list1 as listItem>
+                            <tr>
+                                <td>${listItem.userName}</td>
+                                <td>${listItem.fname} ${listItem.lname}</td>
+                                <td>${listItem.email}</td>
+                                <td><a href="mailto:${listItem.email}" class="btn btn-default btn-lg">Send email</a></td>
+                            </tr>
+                        </#list>
+                    </tbody>
+                </table>
+
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center">
-                    <img class="img-responsive img-border img-full" src="img/slide-2.jpg" alt="">
+                    <img class="img-responsive img-border img-full" src="img/csgo.png" alt="">
                     <h2>Counter Strike
                         <br>
                         <small>Current Recruits</small>
                     </h2>
-                    <p>List the recruits for this game. Each place holder would be one recruit, can make more</p>
-                    <a href="#" class="btn btn-default btn-lg">Send email</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th>User name</th>
+                        <th>Name</th>
+                        <th>Contact information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <#list list2 as listItem>
+                            <tr>
+                                <td>${listItem.userName}</td>
+                                <td>${listItem.fname} ${listItem.lname}</td>
+                                <td>${listItem.email}</td>
+                                <td><a href="mailto:${listItem.email}" class="btn btn-default btn-lg">Send email</a></td>
+                            </tr>
+                        </#list>
+                    </tbody>
+                </table>
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center">
@@ -102,8 +149,25 @@
                         <br>
                         <small>Current Recruits</small>
                     </h2>
-                    <p>List the recruits for this game. Each place holder would be one recruit, can make more</p>
-                    <a href="#" class="btn btn-default btn-lg">Send email</a>
+                                    <table class="table">
+                    <thead>
+                        <tr>
+                        <th>User name</th>
+                        <th>Name</th>
+                        <th>Contact information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <#list list3 as listItem>
+                            <tr>
+                                <td>${listItem.userName}</td>
+                                <td>${listItem.fname} ${listItem.lname}</td>
+                                <td>${listItem.email}</td>
+                                <td><a href="mailto:${listItem.email}" class="btn btn-default btn-lg">Send email</a></td>
+                            </tr>
+                        </#list>
+                    </tbody>
+                </table>
                     <hr>
                 <div class="col-lg-12 text-center">
                     <ul class="pager">

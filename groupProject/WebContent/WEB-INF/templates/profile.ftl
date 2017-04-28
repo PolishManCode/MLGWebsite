@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-left"><img src='pictures/logo.png'
+                <a href="MLGServlet?param=home" class="navbar-left"><img src='pictures/logo.png'
 			alt='Recruit Gaming Home' style='width: 100px; height: 54px;'></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,20 +50,46 @@
                         <a href="MLGServlet?param=games">Games</a>
                     </li>
                     <li>
-                        <li><a href="MLGServlet?param=recruit">Recruits</a></li>
+                        <li><a href="MLGServlet?param=recruitment">Recruitment</a></li>
                     </li>
-                    <li>
-                       <li><a href="MLGServlet?param=recruitment">Recruiting</a></li>
-                    </li>
+                    <#if guest>
                     <li>
                         <li><a href="MLGServlet?param=profile">Profile</a></li>
                     </li>
+                    </#if>
+                    <#if guest>
+                    <li class="right">
+                        <li><a href=MLGServlet?param=logOutIn class ="logIn">LogOut</a></li>
+                    </li>
+                    </#if>
+                    
+                    <#if guest = false>
+                    <li class="right">
+                        <li><a href=MLGServlet?param=logOutIn class ="logIn">LogIn</a></li>
+                    </li>
+                    </#if>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+    
+    <script>
+        function openDialog() {
+            document.getElementById('attachment').click();
+        }
+
+        function onFileSelected(input){
+            document.getElementById('labelFileSelected').textContent = 'Selected: ' + input.files[0].name;
+            document.getElementById('labelFileSelected').style.display = '';
+            document.getElementsByName('pButton')[0].style.display = '';
+            document.getElementById('input_ProfilePicName').value = input.files[0].name;
+        }   
+    </script>
+    <input type="file" class="file" id="attachment" style="display: none;" onchange="onFileSelected(this)"/>
+
 
     <div class="container">
 
@@ -77,29 +103,54 @@
                     <hr>
                 </div>
                 <div class="col-md-8">
-					<img class="img-responsive" src="http://placehold.it/750x450" alt="">
+					<img class="img-responsive" src="${profilePicName}" alt="">
                 </div>
                 <div class="col-md-4">
                     <p>Name:
-                        <strong> ${fName}!</strong>
+                        <strong> ${fName}</strong>
                     </p>
                     <p>Last Name:
-                        <strong>${lName}!</strong>
+                        <strong>${lName}</strong>
                     </p>
                     <p>User Name:
-                        <strong>${user}!</strong>
+                        <strong>${user}</strong>
                     </p>
                     <p>Game:
-                        <strong>${game}!</strong>
+                        <strong>${game}</strong>
                     </p>
                     <p>Password:
-                        <strong>${password}!</strong>
+                        <strong>${password}</strong>
                     </p>
-                    <a href="#" class="btn btn-default btn-lg">Add Photo</a>
+                    <p>Email:
+                        <strong>${email}</strong>
+                    </p>
+                    <a href="#" class="btn btn-default btn-lg" onclick="openDialog()">Change Profile Picture</a>
+                    <span style="display:none" id="labelFileSelected"></span>
+
+                    <form role="form" action="MLGServlet?param=changeProfilePic" method="post">
+                        <input type="hidden" value="${userId}" name="user_id" />
+                        <input type="hidden" value="" name="profilePicName" id="input_ProfilePicName"/>
+                        <button type="submit" class="btn btn-default" name="pButton" style="display:none">Confirm</button>
+                    </form>
+
                 </div>
                 <div class="clearfix"></div>
             </div>
         </div>
+        <script>
+        function onPassChange() 
+        {
+            if (document.getElementsByName('Password')[0].value ==
+                document.getElementById('CPassword').value) {
+                document.getElementsByName('sButton')[0].disabled = false;
+                document.getElementById('matchMsg').style.display = 'none';
+            } else {
+                document.getElementsByName('sButton')[0].disabled = true;
+                document.getElementById('matchMsg').style.display = '';
+            }
+    }
+        </script>
+        
 
         <div class="row">
             <div class="box">
@@ -110,37 +161,57 @@
                     </h2>
                     <hr>
                     <p>Change your information.</p>
-                    <form role="form">
+                    <form role="form" action="MLGServlet?param=editInfo" method="post">
+                    <input type="hidden" value="${userId}" name="user_id" />
                         <div class="row">
                             <div class="form-group col-lg-4">
                                 <label>Name</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="FName">
                             </div>
                             <div class="form-group col-lg-4">
                                 <label>Last Name</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="LName">
                             </div>
                             <div class="form-group col-lg-4">
                                 <label>User Name</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="UName">
                             </div>
                             <div class="clearfix"></div>
                             <div class="form-group col-lg-4">
                                 <label>Game</label>
-                                <input type="text" class="form-control">
+                                <select name="game" class="form-control">
+    								<option class="gameOption" value="Dota 2">Dota 2</option>
+    								<option class="gameOption" value="World of Warcraft">World of Warcraft</option>
+   									<option class="gameOption" value="CSGO">Counter Strike: Global Offensive</option>
+    								<option class="gameOption" value="League of Legends">League of Legends</option>
+    								<option class="gameOption" value="Smite">Smite</option>
+    								<option class="gameOption" value="Halo5">Halo 5</option>
+    								<option class="gameOption" value="Call of Duty, Black Ops3">Call of Duty: Black Ops 3</option>
+    								<option class="gameOption" value="Hearthstone, Heroes of Warcraft">Hearthstone Heroes of Warcraft</option>
+    								<option class="gameOption" value="Starcraft II">Starcraft II</option>
+    								<option class="gameOption" value="Heroes of the Storm">Heroes of the Storm</option>
+    								<option class="gameOption" value="Call of Duty, Advanced Warfare">Call of Duty: Advanced Warfare</option>
+    								<option class="gameOption" value="Overwatch">Overwatch</option>
+    								<option class="gameOption" value="Gears of War 4">Gears of War 4</option>
+  								</select>
                             </div>
                             <div class="form-group col-lg-4">
                                 <label>Password</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="Password" onchange="onPassChange()">
                             </div>
                             <div class="form-group col-lg-4">
                                 <label>Re-type Password</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" id="CPassword" onchange="onPassChange()">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="email" onchange="onPassChange()">
                             </div>
                             <div class="form-group col-lg-12">
                                 <input type="hidden" name="save" value="contact">
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button type="submit" class="btn btn-default" name="sButton">Submit</button>
                             </div>
+                            <span style="display:none" id="matchMsg">Passwords don't match.</span>
                         </div>
                     </form>
                 </div>

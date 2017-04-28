@@ -9,8 +9,21 @@ private String lname;
 private String userName;
 private String password;
 private String game;
+private String email;
+private String profilePic;
 
 
+
+
+public User(String fname, String lname, String userName, String password, String game, String email) {
+	super();
+	this.fname = fname;
+	this.lname = lname;
+	this.userName = userName;
+	this.password = password;
+	this.game = game;
+	this.email = email;
+}
 public User(String fname, String lname, String userName, String password) {
 	super();
 	this.fname = fname;
@@ -25,6 +38,17 @@ public User(String fname, String lname, String userName, String password, String
 	this.userName = userName;
 	this.password = password;
 	this.game = game;
+}
+public User(int id, String fname, String lname, String userName, String password, String game, String email, String profilePic) {
+	super();
+	this.userID = id;
+	this.fname = fname;
+	this.lname = lname;
+	this.userName = userName;
+	this.password = password;
+	this.game = game;
+	this.profilePic = profilePic;
+	this.email = email;
 }
 
 public User() {
@@ -72,6 +96,22 @@ public String getGame() {
 }
 public void setGame(String game) {
 	this.game = game;
+}
+
+public String getProfilePic() {
+	return profilePic;
+}
+
+public void setProfilePic(String profilePic) {
+	this.profilePic = profilePic;
+}
+
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
 }
 
 

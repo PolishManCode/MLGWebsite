@@ -1,6 +1,7 @@
 package groupProject.MLG.logiclayer;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import groupProject.MLG.objectlayer.Link;
 import groupProject.MLG.objectlayer.User;
@@ -23,7 +24,7 @@ public class MLGImpl {
 	
 	public void create(User user)
 	{
-		impl.createUser(user.getFname(), user.getLname(), user.getUserName(), user.getPassword());
+		impl.createUser(user.getFname(), user.getLname(), user.getUserName(), user.getPassword(), user.getGame(), user.getEmail());
 	}
 	
 	public boolean check(User user) throws SQLException{
@@ -44,6 +45,49 @@ public class MLGImpl {
 		
 		
 		return tempLink;
+		
+	}
+
+	public List<Link> getTopTen(String game) {
+		// TODO Auto-generated method stub
+		return impl.getTopTen(game);
+	}
+
+	public String getUserNameFromId(int userID) {
+		// TODO Auto-generated method stub
+		return impl.getUserNameFromId(userID);
+	}
+	public List<User> getPlayersFromGame(String game)
+	{
+		return impl.getPlayersFromGame(game);
+	}
+	
+	public void castVote(int linkId, boolean like)
+	{
+		impl.castVote(linkId, like);
+	}
+	public void changeUserInfo(int userId, String Fname, String LName, String Uname, String password, String game, String email) {
+		impl.changeUserInfo(userId, Fname, LName, Uname, password, game, email);
+	}
+	
+	public void setProfilePic(int userId, String picName)
+	{
+		impl.setProfilePic(userId, picName);
+	}
+
+	public User reutrnUserInfoByID(int userID) throws SQLException {
+		// TODO Auto-generated method stub
+		User tempUser = new User();
+		tempUser = impl.getUserInfoFromID(userID);
+		
+		
+		return tempUser;
+		
+	}
+
+	public void createLink(Link newLink) {
+		// TODO Auto-generated method stub
+		impl.creatLink(newLink.getLink(), newLink.getGame(), newLink.getUserID());
 		
 	}
 }

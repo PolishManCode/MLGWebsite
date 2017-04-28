@@ -6,6 +6,7 @@ public class Link {
 	private String game;
 	private int voteCount;
 	private int userID;
+	private String playerName;
 
 	
 	public Link(int linkID, String link, String game, int voteCount, int userID) {
@@ -50,6 +51,12 @@ public class Link {
 	}
 	public void setUserID(int userID) {
 		this.userID = userID;
+	}
+	public String getPlayerName() {
+		return playerName;
+	}
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
 }

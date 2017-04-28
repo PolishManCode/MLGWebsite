@@ -81,35 +81,7 @@
         <div class="row">
             <div class="box">
                 <div class="col-lg-12 text-center">
-                    <div id="carousel-example-generic" class="carousel slide">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators hidden-xs">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="img-responsive img-full" src="img/slide-1.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="img/slide-2.jpg" alt="">
-                            </div>
-                            <div class="item">
-                                <img class="img-responsive img-full" src="img/slide-3.jpg" alt="">
-                            </div>
-                        </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="icon-prev"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="icon-next"></span>
-                        </a>
-                    </div>
+                    
                     <h2 class="brand-before">
                         <small>Welcome to</small>
                     </h2>
@@ -124,29 +96,44 @@
                 <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">Here are the  
-                        <strong>TOP 10 videos</strong>
+                        <strong>World of Warcraft videos</strong>
                     </h2>
                     
             </div>
         </div>
    
-        <#assign i = 1>
-        <#list topList as topRow>
-            <div class="row">
-                <div class="box">
-                    <div class="col-sm-12">
-                        <h2>#${i} by ${topRow.playerName} (${topRow.voteCount} votes)</h2>
-                        <div class="embed-responsive embed-responsive-16by9" >
-                        <iframe class="embed-responsive-item"  src="${topRow.link}"></iframe>
+        <div class="box"><h2>Top Videos for ${gameName}</h2></div>
+        <#if topList?size != 0>
+            <#assign i = 1>
+            <#list topList as topRow>
+                <div class="row">
+                    <div class="box">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h2>#${i} by ${topRow.playerName} (${topRow.voteCount} votes)</h2>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <a href="MLGServlet?param=vote&videoID=${topRow.linkID}&like=1" class="btn btn-default btn-lg">Like</a>
+                                    <a href="MLGServlet?param=vote&videoID=${topRow.linkID}&like=0" class="btn btn-default btn-lg">Dislike</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="embed-responsive embed-responsive-16by9" >
+                                <iframe class="embed-responsive-item"  src="${topRow.link}"></iframe>
+                                </div>
+                            </div>
                         </div>
+                        
                     </div>
-                </div>
-            </div>    
-        <#assign i++>
-        </#list>
-                  
-
-
+                </div>    
+            <#assign i++>
+            </#list>            
+       <#else>
+       <div class="box"><h5>No videos yet</h5></div>
+       </#if>
 
     </div>
     <!-- /.container -->

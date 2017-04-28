@@ -39,7 +39,7 @@
             <input type ="password" name="pass" required autocomplete="off"/>
           </div>
           
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
+          <p class="forgot"><a href="MLGServlet?param=noLogIn">Continue without login in?</a></p>
           
           <button name="login" class="button button-block"/>Log In</button>
           
@@ -67,7 +67,7 @@
               <input type ="text" name="lname" required autocomplete="off" />
             </div>
           </div>
-
+		<div class="top-row">
           <div class="field-wrap">
             <label>
               User Name<span class="req">*</span>
@@ -77,16 +77,38 @@
           
           <div class="field-wrap">
             <label>
+              Email<span class="req">*</span>
+            </label>
+            <input type="text" name="email" required autocomplete="off"/>
+          </div>
+          
+        </div>
+          <div class="field-wrap">
+            <label>
               Set A Password<span class="req">*</span>
             </label>
             <input type ="password" name="pass" required autocomplete="off"/>
           </div>
           
           <div class="field-wrap">
-              <label>
-                Game<span class="req">*</span>
-              </label>
-              <input type ="text" name="game" required autocomplete="off" />
+          <div>
+              <span class="game">Choose a game: </span><span class="gameReq">*</span>
+           </div>
+                <select name="game">
+    				<option class="gameOption" value="Dota 2">Dota 2</option>
+    				<option class="gameOption" value="World of Warcraft">World of Warcraft</option>
+   					<option class="gameOption" value="CSGO">Counter Strike: Global Offensive</option>
+    				<option class="gameOption" value="League of Legends">League of Legends</option>
+    				<option class="gameOption" value="Smite">Smite</option>
+    				<option class="gameOption" value="Halo5">Halo 5</option>
+    				<option class="gameOption" value="Call of Duty, Black Ops3">Call of Duty: Black Ops 3</option>
+    				<option class="gameOption" value="Hearthstone, Heroes of Warcraft">Hearthstone Heroes of Warcraft</option>
+    				<option class="gameOption" value="Starcraft II">Starcraft II</option>
+    				<option class="gameOption" value="Heroes of the Storm">Heroes of the Storm</option>
+    				<option class="gameOption" value="Call of Duty, Advanced Warfare">Call of Duty: Advanced Warfare</option>
+    				<option class="gameOption" value="Overwatch">Overwatch</option>
+    				<option class="gameOption" value="Gears of War 4">Gears of War 4</option>
+  				</select>
             </div>
 
           <button type="submit" name="register" class="button button-block"/>Get Started</button>
